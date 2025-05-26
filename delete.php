@@ -1,42 +1,33 @@
 <?php
-// Process delete operation after confirmation
-if(isset($_POST["id"]) && !empty($_POST["id"])){
-    // Include config file
+ob_start();
+if (isset($_POST["id"]) && !empty($_POST["id"])) {
     require_once "config.php";
-    
-    // Prepare a delete statement
+
     $sql = "DELETE FROM employees WHERE id = ?";
-    
-    if($stmt = mysqli_prepare($link, $sql)){
-        // Bind variables to the prepared statement as parameters
+
+    if ($stmt = mysqli_prepare($link, $sql)) {
         mysqli_stmt_bind_param($stmt, "i", $param_id);
-        
-        // Set parameters
+
         $param_id = trim($_POST["id"]);
-        
-        // Attempt to execute the prepared statement
-        if(mysqli_stmt_execute($stmt)){
-            // Records deleted successfully. Redirect to landing page
+
+        if (mysqli_stmt_execute($stmt)) {
             header("location: index.php");
             exit();
-        } else{
+        } else {
             echo "Oops! Something went wrong. Please try again later.";
         }
     }
-     
-    // Close statement
+
     mysqli_stmt_close($stmt);
-    
-    // Close connection
     mysqli_close($link);
-} else{
-    // Check existence of id parameter
-    if(empty(trim($_GET["id"]))){
-        // URL doesn't contain id parameter. Redirect to error page
+} else {
+    if (empty(trim($_GET["id"]))) {
         header("location: error.php");
         exit();
     }
 }
+
+ob_end_flush();
 ?>
 
 <!DOCTYPE html>
@@ -46,7 +37,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
     <title>Delete Record</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
-        .wrapper{
+        .wrapper {
             width: 600px;
             margin: 0 auto;
         }
@@ -69,8 +60,9 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                         </div>
                     </form>
                 </div>
-            </div>        
+            </div>
         </div>
     </div>
 </body>
 </html>
+

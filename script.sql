@@ -1,7 +1,6 @@
 -- phpMyAdmin SQL Dump
 -- version 4.7.9
 -- https://www.phpmyadmin.net/
---
 -- Generation Time: Dec 04, 2018 at 11:50 AM
 -- Server version: 5.7.24
 -- PHP Version: 7.2.2
@@ -14,8 +13,6 @@ SET time_zone = "+00:00";
 -- phpMyAdmin SQL Dump
 -- version 5.1.0
 -- https://www.phpmyadmin.net/
---
--- Host: 127.0.0.1
 -- Generation Time: Jul 02, 2021 at 07:51 AM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 7.3.28
@@ -23,7 +20,6 @@ SET time_zone = "+00:00";
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
-
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -35,6 +31,11 @@ SET time_zone = "+00:00";
 --
 
 -- --------------------------------------------------------
+
+--
+-- Drop the existing table `employees` if it exists to avoid errors
+--
+DROP TABLE IF EXISTS `employees`;
 
 --
 -- Table structure for table `employees`
@@ -76,6 +77,7 @@ ALTER TABLE `employees`
 --
 ALTER TABLE `employees`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
@@ -84,7 +86,7 @@ COMMIT;
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
 
 --
@@ -92,6 +94,11 @@ COMMIT;
 --
 
 -- --------------------------------------------------------
+
+--
+-- Drop the existing table `MOE_ITEM_T` if it exists to avoid errors
+--
+DROP TABLE IF EXISTS `MOE_ITEM_T`;
 
 --
 -- Table structure for table `MOE_ITEM_T`
@@ -110,8 +117,11 @@ CREATE TABLE `MOE_ITEM_T` (
 INSERT INTO `MOE_ITEM_T` (`ITEM_NAME`, `ITEM_DESC`, `ITEM_ONHAND`) VALUES
 ('TEST-ITEM-1', 'TEST-ITEM-DESC-1', 10),
 ('TEST-ITEM-2', 'TEST-ITEM-DESC-2', 20);
+
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+
