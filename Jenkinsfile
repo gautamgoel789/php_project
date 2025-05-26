@@ -1,5 +1,7 @@
 pipeline {
 
+    agent any
+
     environment {
         DOCKER_REGISTRY = 'ayushkr08'
         APP_IMAGE = 'php-mysql-app'
