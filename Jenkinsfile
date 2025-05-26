@@ -21,6 +21,16 @@ pipeline {
                 }
             }
         }
+             stage('Login to Docker Hub') {
+            steps {
+                script {
+                    echo '🔐 Logging in to Docker Hub...'
+                    withCredentials([usernamePassword(credentialsId: 'DOCKER_CREDENTIALS', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
+                        sh 'echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin'
+                    }
+                }
+            }
+        }
 
         stage('Build Docker Image') {
             steps {
@@ -31,16 +41,7 @@ pipeline {
             }
         }
 
-        stage('Login to Docker Hub') {
-            steps {
-                script {
-                    echo '🔐 Logging in to Docker Hub...'
-                    withCredentials([usernamePassword(credentialsId: 'DOCKER_CREDENTIALS', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
-                        sh 'echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin'
-                    }
-                }
-            }
-        }
+      
 
         stage('Push Docker Image to Docker Hub') {
             steps {
