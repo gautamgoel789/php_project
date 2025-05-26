@@ -9,7 +9,7 @@ services:
     volumes:
       - .:/var/www/html
     depends_on:
-      mysql-db:
+      mysql-app:
         condition: service_healthy  
     networks:
       - app_network
