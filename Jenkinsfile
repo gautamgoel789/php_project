@@ -1,5 +1,4 @@
 pipeline {
-    agent { label 'ec2_agent' }
 
     environment {
         DOCKER_REGISTRY = 'ayushkr08'
