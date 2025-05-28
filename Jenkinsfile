@@ -53,17 +53,17 @@ pipeline {
             }
         }
 
-        stage('Run with Docker Compose') {
-            steps {
-                script {
-                    echo '🚀 Running app with Docker Compose...'
-                    dir('my-php-project') {
-                        sh 'docker-compose up -d'
-                    }
-                }
-            }
-        }
-    }
+    //     stage('Run with Docker Compose') {
+    //         steps {
+    //             script {
+    //                 echo '🚀 Running app with Docker Compose...'
+    //                 dir('my-php-project') {
+    //                     sh 'docker-compose up -d'
+    //                 }
+    //             }
+    //         }
+    //     }
+    // }
 
     post {
         always {
